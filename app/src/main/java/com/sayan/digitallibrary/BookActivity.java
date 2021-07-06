@@ -7,22 +7,31 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+
 
 public class BookActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private BookAdapter bookAdapter;
 
+    Item item;
+    Dialog dialog;
+    String bookName;
+    String authorName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
+        // Implementation for RecyclerView
         bookAdapter = new BookAdapter();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -37,7 +46,23 @@ public class BookActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(bookAdapter);
 
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                item = new Item();
+                bookName = item.getBook(position);
+                authorName = item.getAuthor(position);
+                dialog = onCreateMyDialog(bookName, authorName);
+                dialog.show();
+            }
 
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
+        // Setting Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
@@ -51,6 +76,21 @@ public class BookActivity extends AppCompatActivity {
     private void openCreditDialog() {
         CreditDialog creditDialog = new CreditDialog();
         creditDialog.show(getSupportFragmentManager(), "Credit Dialog");
+    }
+
+    private Dialog onCreateMyDialog(String bookName, String authorName) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder
+                .setTitle(bookName)
+                .setMessage("\nAuthor:    " + authorName)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        return builder.create();
     }
 
     @Override
