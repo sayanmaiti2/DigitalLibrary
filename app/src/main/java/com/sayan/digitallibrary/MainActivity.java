@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -16,11 +15,15 @@ public class MainActivity extends AppCompatActivity {
 
     private Button bookButton;
     private Button newspaperButton;
+    public static AppCompatActivity mainActivity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mainActivity = this;
 
         bookButton = findViewById(R.id.book_button);
         newspaperButton = findViewById(R.id.newspaper_button);
@@ -28,19 +31,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        bookButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openBookActivity();
-            }
-        });
+        bookButton.setOnClickListener(v -> openBookActivity());
 
-        newspaperButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNewspaperActivity();
-            }
-        });
+        newspaperButton.setOnClickListener(v -> openNewspaperActivity());
     }
 
 
@@ -54,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(newspaperIntent);
     }
 
+    private void openCreditDialog() {
+        CreditDialog creditDialog = new CreditDialog();
+        creditDialog.show(getSupportFragmentManager(), "Credit Dialog");
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -64,10 +62,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.mnu_credit:
-                Toast.makeText(this, "Credits Selected",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Credits Selected",Toast.LENGTH_SHORT).show();
+                openCreditDialog();
                 break;
             case R.id.mnu_exit:
-                Toast.makeText(this, "EXIT Selected",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "EXIT Selected",Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }

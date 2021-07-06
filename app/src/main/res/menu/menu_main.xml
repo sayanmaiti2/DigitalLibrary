@@ -3,9 +3,9 @@
 
     <item
         android:id="@+id/mnu_credit"
-        android:title="Credit" />
+        android:title="@string/credit" />
 
     <item
         android:id="@+id/mnu_exit"
-        android:title="Exit" />
+        android:title="@string/exit" />
 </menu>

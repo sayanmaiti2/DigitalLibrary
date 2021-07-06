@@ -27,15 +27,21 @@ public class BookActivity extends AppCompatActivity {
         return true;
     }
 
+    private void openCreditDialog() {
+        CreditDialog creditDialog = new CreditDialog();
+        creditDialog.show(getSupportFragmentManager(), "Credit Dialog");
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.mnu_credit:
-                Toast.makeText(this, "Credits Selected",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Credits Selected",Toast.LENGTH_SHORT).show();
+                openCreditDialog();
                 break;
             case R.id.mnu_exit:
-                Toast.makeText(this, "EXIT Selected",Toast.LENGTH_SHORT).show();
                 finish();
+                MainActivity.mainActivity.finish();
                 break;
         }
         return true;
