@@ -1,20 +1,17 @@
 package com.sayan.digitallibrary;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button bookButton;
-    private Button newspaperButton;
     public static AppCompatActivity mainActivity;
 
 
@@ -25,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         mainActivity = this;
 
-        bookButton = findViewById(R.id.book_button);
-        newspaperButton = findViewById(R.id.newspaper_button);
+        Button bookButton = findViewById(R.id.book_button);
+        Button newspaperButton = findViewById(R.id.newspaper_button);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

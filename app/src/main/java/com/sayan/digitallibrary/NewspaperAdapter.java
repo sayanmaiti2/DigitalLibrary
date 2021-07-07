@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class NewspaperAdapter extends RecyclerView.Adapter<NewspaperAdapter.ViewHolder> {
 
-    private Item item;
+    private final Item item;
 
     public NewspaperAdapter() {
         item = new Item();
@@ -21,8 +21,7 @@ public class NewspaperAdapter extends RecyclerView.Adapter<NewspaperAdapter.View
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.newspaper_list_item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -35,7 +34,7 @@ public class NewspaperAdapter extends RecyclerView.Adapter<NewspaperAdapter.View
         return item.getDateCount();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView newsDate;
 

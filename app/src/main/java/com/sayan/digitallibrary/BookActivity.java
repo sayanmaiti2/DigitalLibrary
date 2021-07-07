@@ -17,9 +17,6 @@ import android.view.View;
 
 public class BookActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private BookAdapter bookAdapter;
-
     Item item;
     Dialog dialog;
     String bookName;
@@ -31,11 +28,11 @@ public class BookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book);
 
         // Implementation for RecyclerView
-        bookAdapter = new BookAdapter();
+        BookAdapter bookAdapter = new BookAdapter();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
 
-        recyclerView = findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(

@@ -4,4 +4,7 @@
     <string name="newspaper">Newspaper</string>
     <string name="credit">Credit</string>
     <string name="exit">Exit</string>
+    <string name="book_icon">Book Icon</string>
+    <string name="book_cover_image">Book Cover Image</string>
+    <string name="newspaper_icon">Newspaper Icon</string>
 </resources>

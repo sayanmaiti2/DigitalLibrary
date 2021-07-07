@@ -1,8 +1,5 @@
 package com.sayan.digitallibrary;
 
-//public class RecyclerTouchListener {
-//}
-
 import android.content.Context;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -12,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
-    private GestureDetector gestureDetector;
-    private ClickListener clickListener;
+    private final GestureDetector gestureDetector;
+    private final ClickListener clickListener;
 
     public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final ClickListener clickListener){
         this.clickListener = clickListener;

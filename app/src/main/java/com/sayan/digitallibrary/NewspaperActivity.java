@@ -14,20 +14,17 @@ import android.view.MenuItem;
 
 public class NewspaperActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private NewspaperAdapter newspaperAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newspaper);
 
 //        Implementation for Recycler View
-        newspaperAdapter = new NewspaperAdapter();
+        NewspaperAdapter newspaperAdapter = new NewspaperAdapter();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
 
-        recyclerView = findViewById(R.id.news_recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.news_recycler_view);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
